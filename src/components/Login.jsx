@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -11,7 +11,7 @@ const Login = () => {
     const password= useRef(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const [Error,setError] = useState("");
     const handleLogin = async() =>{
           try{
            
@@ -23,7 +23,7 @@ const Login = () => {
              return navigate("/");
           }
           catch(err){
-             console.log(err);
+             setError(err?.response?.data||"something went wrong");
           }
     }
   return (
@@ -35,7 +35,7 @@ const Login = () => {
   
   <label className="fieldset-label mt-2">Password</label>
   <input type="password"ref={password} className="input" placeholder="Password" />
-  
+  <p className="text-red-800 text-lg">{Error}</p>
   <button className="btn btn-neutral mt-8" onClick={handleLogin}>Login</button>
 </fieldset>
       </div>
