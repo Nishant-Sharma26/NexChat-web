@@ -23,17 +23,17 @@ const Connections = () => {
         fetchConnections();
     },[])
 
-    if(!connections) return;
+    
 
-    if(connections.length===0) return <h1>No Connection Found</h1>
+    if(!connections||connections.length===0) return <h1>No Connection Found</h1>
   return (
     <div className='text-center my-4'>
       <h1 className='text-3xl font-semibold'>Connections</h1>
       {
         connections.map((connection)=>{
-         const {firstName,lastName,photoURL,about,age,gender} = connection;
+         const {_id,firstName,lastName,photoURL,about,age,gender} = connection;
          return (
-            <div className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
+            <div key={_id}className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
                 <div>  <img alt="photo" className='w-20 h-20 rounded-full'src={photoURL}/>
                 </div>
                 <div className='text-left mx-6'>
