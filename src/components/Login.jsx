@@ -22,7 +22,7 @@ const Login = () => {
            
              dispatch(addUser(res.data.user));
              
-             return navigate("/feed");
+             return navigate("/");
           }
           catch(err){
              setError(err?.response?.data||"something went wrong");
