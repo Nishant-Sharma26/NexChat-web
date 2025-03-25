@@ -19,7 +19,9 @@ const Login = () => {
                 emailId: emailId.current.value,
                 password: password.current.value
             },{withCredentials: true});
-             dispatch(addUser(res.data));
+           
+             dispatch(addUser(res.data.user));
+             
              return navigate("/feed");
           }
           catch(err){

@@ -12,8 +12,6 @@ const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store)=>store.user);
-
-
   const fetchUser = async()=>{
      
     try{
@@ -24,11 +22,12 @@ const Body = () => {
       withCredentials: true,
      });
      dispatch(addUser(res.data));
+     //console.log(res.data);
     }
     catch(err){
-       if(err.status===401)
+       if(err.status===400)
        navigate("/login");
-       console.log(err);
+       //console.log(err);
     }
   };
    useEffect(()=>{
