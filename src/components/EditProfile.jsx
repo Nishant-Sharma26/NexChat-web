@@ -15,8 +15,7 @@ const EditProfile = ({user}) => {
   const [photoURL,setPhotoURL] = useState(user.photoURL);
   const [showToast,setShowToast] = useState(false);
 
-  const [error, setError] = useState(""); // Error state
-  const dispatch = useDispatch();
+  const [error, setError] = useState(""); 
   const navigate = useNavigate(); 
 
   const saveProfile = async()=>{
