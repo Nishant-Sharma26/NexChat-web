@@ -17,7 +17,7 @@ const EditProfile = ({user}) => {
 
   const [error, setError] = useState(""); 
   const navigate = useNavigate(); 
-
+  const dispatch = useDispatch();
   const saveProfile = async()=>{
     try{
         setError("");
