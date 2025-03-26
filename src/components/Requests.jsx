@@ -33,7 +33,7 @@ const Requests = () => {
         fetchRequests();
     }, []);
     console.log(requests);
-    if (!requests || requests.length === 0) return <h1 className='flex justify-center my-10'>No Request Found</h1>;
+    if (!requests || requests.length === 0) return <h1 className='flex justify-center my-10 font-semibold text-2xl'>No Request Found</h1>;
     return (
         <div className="text-center my-6 px-4">
             <h1 className="text-3xl font-semibold mb-6">Connection Requests</h1>
@@ -57,8 +57,8 @@ const Requests = () => {
                             </div>
                         </div>
                         <div className="flex space-x-4">
-                            <button className="btn btn-primary px-4 py-2" onClick={()=>reviewRequests("rejected",request._id)}>Reject</button>
-                            <button className="btn btn-secondary px-4 py-2"  onClick={()=>reviewRequests("accepted",request._id)}>Accept</button>
+                            <button className="btn btn-outline btn-primary px-4 py-2" onClick={()=>reviewRequests("rejected",request._id)}>Reject</button>
+                            <button className="btn btn-outline btn-secondary px-4 py-2"  onClick={()=>reviewRequests("accepted",request._id)}>Accept</button>
                         </div>
                     </div>
                 );

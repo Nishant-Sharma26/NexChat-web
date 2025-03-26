@@ -1,12 +1,29 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+
+import { useDispatch } from "react-redux";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
+import { removeUserFeed } from "../utils/feedSlice";
+
+
 const UserCard = ({user}) => {
-     const {firstName,lastName,photoURL,age,gender,Skills,about} = user
+     const {_id,firstName,lastName,photoURL,age,gender,about} = user;
+     const dispatch = useDispatch();
+     const handleSendRequest = async(status,_id)=>{
+      try{
+        const res = await axios.post(BASE_URL+"/request/send/"+status+"/"+_id,{},{
+          withCredentials:true
+        });
+          dispatch(removeUserFeed(_id));
+      }
+      catch(err){
+         
+      }
+     };
       return (
     <div>
       <div className="card bg-base-300 w-96 shadow-sm">
   <figure >
-    <img className="w-76"
+    <img className="w-72"
       src={photoURL}
       alt="userImage" />
   </figure>
@@ -15,8 +32,8 @@ const UserCard = ({user}) => {
     {age && gender &&<p>{age+" "+gender}</p>}
     <p>{about}</p>
     <div className="card-actions my-6 justify-start">
-      <button className="btn btn-primary ">ignore</button>
-      <button className="btn btn-secondary mx-18">interested</button>
+      <button className="btn btn-outline btn-primary " onClick={()=>handleSendRequest("ignored",_id)}>ignore</button>
+      <button className="btn btn-outline btn-secondary mx-18"onClick={()=>handleSendRequest("interested",_id)}>interested</button>
     </div>
   </div>
 </div>
